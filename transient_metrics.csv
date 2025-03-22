@@ -1,0 +1,5 @@
+System,Rise Time (s),Rise Time start (s),Rise Time end (s),Threshhold 10 %,Threshhold 90 %,Settling Time (s),Overshoot (%),Steady-State Value,Undamped Natural Freq (rad/s),Damping Ratio
+filtered_velocity_1,0.038,0.031,0.069,0.069,0.617,0.069,151.491,0.685,43.231,-0.131
+filtered_velocity_2,0.074,0.009,0.084,0.068,0.61,0.424,136.298,0.677,45.862,-0.098
+filtered_velocity_3,0.036,0.0,0.036,0.066,0.598,0.838,161.55,0.665,36.468,-0.151
+filtered_velocity_4,0.032,0.011,0.043,0.067,0.604,0.392,154.929,0.671,93.571,-0.138
