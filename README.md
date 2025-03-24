@@ -70,4 +70,4 @@ ros2 run encoded_dc_motor_kit_response_analyzer step_response_analyzer
 
 ## 7. Conclusion
 
-The experiment provided insights into the motor’s steady-state behavior and filtering effectiveness. However, limitations in sampling rate and motor driver performance affected rise time analysis. Future work will focus on improving hardware and software to obtain more accurate system dynamics.
+The experiment provided insights into the motor’s rise time, settling time, overshoot, steady-state valu, underdamped natural frequency, and damping ratio. However, limitations in sampling rate and motor driver performance affected rise time analysis. Future work will focus on improving hardware and software to obtain more accurate system dynamics.
