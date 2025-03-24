@@ -4,11 +4,11 @@ import numpy as np
 import os
 
 # Define the folders (replace these with your actual folder paths)
-folders = ['filtered_velocity_1', 'filtered_velocity_2', 'filtered_velocity_3', 'filtered_velocity_4']
+folders = ['filtered_velocity_1', 'filtered_velocity_2', 'filtered_velocity_3', 'filtered_velocity_4', 'filtered_velocity_5', 'filtered_velocity_6', 'filtered_velocity_7', 'filtered_velocity_8', 'filtered_velocity_9', 'filtered_velocity_10', 'filtered_velocity_11', 'filtered_velocity_12', 'filtered_velocity_13', 'filtered_velocity_14', 'filtered_velocity_15', 'filtered_velocity_16', 'filtered_velocity_17', 'filtered_velocity_18', 'filtered_velocity_19', 'filtered_velocity_20']
 
 # Colors and labels for each folder's data in the plot
-colors = ['blue', 'green', 'red', 'purple']
-labels = ['filtered_velocity_1', 'filtered_velocity_2', 'filtered_velocity_3', 'filtered_velocity_4']
+colors = ['blue', 'green', 'red', 'purple', 'yellow', 'orange', 'pink', 'brown', 'black', 'turquoise', 'gray', 'cyan', 'magenta', 'lime', 'indigo', 'violet', 'teal', 'gold', 'silver', 'maroon']
+labels = ['filtered_velocity_1', 'filtered_velocity_2', 'filtered_velocity_3', 'filtered_velocity_4', 'filtered_velocity_5', 'filtered_velocity_6', 'filtered_velocity_7', 'filtered_velocity_8', 'filtered_velocity_9', 'filtered_velocity_10', 'filtered_velocity_11', 'filtered_velocity_12', 'filtered_velocity_13', 'filtered_velocity_14', 'filtered_velocity_15', 'filtered_velocity_16', 'filtered_velocity_17', 'filtered_velocity_18', 'filtered_velocity_19', 'filtered_velocity_20']
 
 # Initialize a figure for plotting
 plt.figure(figsize=(10, 6))
@@ -17,10 +17,10 @@ plt.figure(figsize=(10, 6))
 metrics = {
     'System': [],
     'Rise Time (s)': [],
-    'Rise Time start (s)': [],
-    'Rise Time end (s)': [],
-    'Threshhold 10 %': [],
-    'Threshhold 90 %': [],
+    #'Rise Time start (s)': [],
+    #'Rise Time end (s)': [],
+    #'Threshhold 10 %': [],
+    #'Threshhold 90 %': [],
     'Settling Time (s)': [],
     'Overshoot (%)': [],
     'Steady-State Value': [],
@@ -76,7 +76,7 @@ for folder, color, label in zip(folders, colors, labels):
     if not np.isnan(overshoot) and overshoot > 0:
         # Overshoot (%) = exp(-ζπ / sqrt(1-ζ^2)) * 100
         zeta = np.log(overshoot / 100) / np.sqrt(np.pi**2 + (np.log(overshoot / 100))**2)
-        zeta = -zeta  # Since log(overshoot/100) is negative
+        zeta = zeta  # Since log(overshoot/100) is negative
     else:
         zeta = np.nan  # If no overshoot, damping ratio cannot be determined this way
     
@@ -101,10 +101,10 @@ for folder, color, label in zip(folders, colors, labels):
     # Store metrics for the table
     metrics['System'].append(label)
     metrics['Rise Time (s)'].append(rise_time)
-    metrics['Rise Time start (s)'].append(rise_time_start)
-    metrics['Rise Time end (s)'].append(rise_time_end)
-    metrics['Threshhold 10 %'].append(threshold_10)
-    metrics['Threshhold 90 %'].append(threshold_90)
+    #metrics['Rise Time start (s)'].append(rise_time_start)
+    #metrics['Rise Time end (s)'].append(rise_time_end)
+    #metrics['Threshhold 10 %'].append(threshold_10)
+    #metrics['Threshhold 90 %'].append(threshold_90)
     metrics['Settling Time (s)'].append(settling_time)
     metrics['Overshoot (%)'].append(overshoot)
     metrics['Steady-State Value'].append(steady_state_value)
