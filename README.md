@@ -8,18 +8,21 @@ This experiment aims to analyze the response characteristics of a motor system u
 
 ### Hardware Components
 
-- Motor: [Specify motor model]
-- Motor Driver: L298
-- Microcontroller: [Specify MCU]
-- Power Supply: [Specify voltage and current rating]
-- Sensor: [Specify type and model]
+- Motor: 25GA-370 12V 130rpm DC with Encoder Module
+- Motor Driver: L298 Dual H-Bridge Motor Driver
+- Microcontroller: ESP32 WROOM
+- Power Supply: 12V/2A
+- Sensor: Optical encoder (comes with the motor)
 
 ### Software Components
 
-- Control Algorithm: [Specify method, e.g., PID, open-loop PWM]
+- Control Algorithm: 
+    - ROS2 motor kit hardware interface [Hardware interface](https://github.com/KevinKipkorir254/motor-control-kit/tree/main/encoded_dc_motor_kit_hardware_interface)
+    - ROS2 node proportional controller [Proportional controller](https://github.com/KevinKipkorir254/motor-control-kit/tree/main/encoded_dc_motor_kit_PID)
+    - ROS2 node respnse analyser [Stet response](https://github.com/KevinKipkorir254/motor-control-kit/tree/main/encoded_dc_motor_kit_hardware_interface)
 - Sampling Frequency: 100 Hz
 - Filtering: Second-order filter
-- Data Logging: [Specify software or method used]
+- Data Logging: Through a subscriber in the response analyser node then inserted into a csv file, experiment runs for 10 seconds
 
 ## 3. Methodology
 
@@ -29,29 +32,41 @@ This experiment aims to analyze the response characteristics of a motor system u
 4. Collect data at 100 Hz sampling rate.
 5. Plot the response for visualization.
 
+## How to repeat the experiment.
+
+```bash
+ros2 launch encoded_dc_motor_kit_description motor_kit_server.launch.py
+```
+
+```bash
+ros2 run encoded_dc_motor_kit_PID p_controller
+```
+
+```bash
+ros2 run encoded_dc_motor_kit_response_analyzer step_response_analyzer
+```
+
 ![Data processed data output](Time_series_data.png)
 
 ## 4. Observations & Key Findings
 
-- Steady-State Behavior: [Describe whether the motor reached expected final speed]
-- Rise Time Analysis: Not accurately measurable due to sampling limitations.
-- Noise & Filtering: [Describe filter effectiveness and any distortions]
-- Unexpected Behavior: Observed faster rise times with lower gains, suggesting possible system non-linearity.
+- Rise Time (s).
+- Settling Time (s).
+- Overshoot (%)
+- Steady-State Value.
+- Undamped Natural Freq (rad/s)
+- Damping Ratio.
 
 ![Time series characteristics](Time_series_characteristics.png)
 
 ## 5. Challenges & Limitations
 
 - Limited Sampling Rate: 100 Hz is too low for precise transient analysis.
-- Voltage Drop in L298: May be affecting torque and acceleration.
 - Sensor Noise: Requires filtering, but filtering may impact transient accuracy.
 
 ## 6. Future Improvements
 
 - Use a higher-frequency sampling system for transient analysis.
-- Test with a MOSFET-based motor driver to reduce voltage drop.
-- Compare performance with alternative filtering techniques.
-- Investigate the unexpected rise time behavior by modeling system dynamics.
 
 ## 7. Conclusion
 
