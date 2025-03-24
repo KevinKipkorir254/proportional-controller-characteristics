@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.signal import find_peaks
 import os
 
 # Define the folders (replace these with your actual folder paths)
@@ -25,8 +26,34 @@ metrics = {
     'Overshoot (%)': [],
     'Steady-State Value': [],
     'Undamped Natural Freq (rad/s)': [],
-    'Damping Ratio': []
+    'Damping Ratio': [],
+    #'damping ration log': [],
 }
+
+
+def estimate_damping_log_dec(y, t):
+    """
+    Estimate damping ratio using logarithmic decrement method.
+    
+    :param y: System response (time-series data)
+    :param t: Corresponding time values
+    :return: Estimated damping ratio ζ
+    """
+    peaks, _ = find_peaks(y)  # Find peak indices
+    
+    if len(peaks) < 2:
+        raise ValueError("At least two peaks are needed.")
+
+    # Peak values
+    A1, A2 = y[peaks[0]], y[peaks[1]]
+    
+    # Logarithmic decrement
+    delta = np.log(A1 / A2)
+    
+    # Damping ratio formula
+    zeta = 1 / np.sqrt(1 + (2 * np.pi / delta) ** 2)
+    
+    return zeta
 
 # Process each folder's processed data
 for folder, color, label in zip(folders, colors, labels):
@@ -58,12 +85,14 @@ for folder, color, label in zip(folders, colors, labels):
     # Rise Time (10% to 90% of steady-state value)
     threshold_10 = 0.1 * steady_state_value
     threshold_90 = 0.9 * steady_state_value
-    rise_time_start = time[output >= threshold_10].iloc[0] if any(output >= threshold_10) else np.nan
-    rise_time_end = time[output >= threshold_90].iloc[0] if any(output >= threshold_90) else np.nan
+    #rise_time_start = time[output >= threshold_10].iloc[0] if any(output >= threshold_10) else np.nan
+    #rise_time_end = time[output >= threshold_90].iloc[0] if any(output >= threshold_90) else np.nan
+    rise_time_start = np.interp(threshold_10, output, time)  # Interpolated time for 10%
+    rise_time_end = np.interp(threshold_90, output, time)  # Interpolated time for 90%
     rise_time = rise_time_end - rise_time_start if not np.isnan(rise_time_end) and not np.isnan(rise_time_start) else np.nan
     
-    # Settling Time (within 2% of steady-state value)
-    settling_threshold = 0.02 * steady_state_value
+    # Settling Time (within 5% of steady-state value)
+    settling_threshold = 0.05 * steady_state_value
     within_settling = (output >= steady_state_value - settling_threshold) & (output <= steady_state_value + settling_threshold)
     settling_time = time[within_settling].iloc[0] if any(within_settling) else np.nan
     
@@ -74,11 +103,10 @@ for folder, color, label in zip(folders, colors, labels):
     # Step 3: Calculate Undamped Natural Frequency and Damping Ratio
     # Damping Ratio (from overshoot)
     if not np.isnan(overshoot) and overshoot > 0:
-        # Overshoot (%) = exp(-ζπ / sqrt(1-ζ^2)) * 100
-        zeta = np.log(overshoot / 100) / np.sqrt(np.pi**2 + (np.log(overshoot / 100))**2)
-        zeta = zeta  # Since log(overshoot/100) is negative
+        zeta = estimate_damping_log_dec( output, time) 
     else:
         zeta = np.nan  # If no overshoot, damping ratio cannot be determined this way
+    
     
     # Undamped Natural Frequency (from the period of oscillation)
     # Find peaks to estimate the period of oscillation
@@ -101,15 +129,13 @@ for folder, color, label in zip(folders, colors, labels):
     # Store metrics for the table
     metrics['System'].append(label)
     metrics['Rise Time (s)'].append(rise_time)
-    #metrics['Rise Time start (s)'].append(rise_time_start)
-    #metrics['Rise Time end (s)'].append(rise_time_end)
-    #metrics['Threshhold 10 %'].append(threshold_10)
-    #metrics['Threshhold 90 %'].append(threshold_90)
     metrics['Settling Time (s)'].append(settling_time)
     metrics['Overshoot (%)'].append(overshoot)
     metrics['Steady-State Value'].append(steady_state_value)
     metrics['Undamped Natural Freq (rad/s)'].append(omega_n)
-    metrics['Damping Ratio'].append(zeta)
+    metrics['Damping Ratio'].append(zeta) #'damping ration low'
+    #metrics['damping ration log'].append(zeta_log)
+    
 
 # Customize and display the plot
 plt.title('Processed Step Response Data (Transient Analysis)')
