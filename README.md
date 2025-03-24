@@ -19,7 +19,7 @@ This experiment aims to analyze the response characteristics of a motor system u
 - Control Algorithm: 
     - ROS2 motor kit hardware interface [Hardware interface](https://github.com/KevinKipkorir254/motor-control-kit/tree/main/encoded_dc_motor_kit_hardware_interface)
     - ROS2 node proportional controller [Proportional controller](https://github.com/KevinKipkorir254/motor-control-kit/tree/main/encoded_dc_motor_kit_PID)
-    - ROS2 node respnse analyser [Stet response](https://github.com/KevinKipkorir254/motor-control-kit/tree/main/encoded_dc_motor_kit_hardware_interface)
+    - ROS2 node response analyser [Step response test](https://github.com/KevinKipkorir254/motor-control-kit/tree/main/encoded_dc_motor_kit_hardware_interface)
 - Sampling Frequency: 100 Hz
 - Filtering: Second-order filter
 - Data Logging: Through a subscriber in the response analyser node then inserted into a csv file, experiment runs for 10 seconds
