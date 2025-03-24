@@ -61,4 +61,4 @@ plt.legend()
 plt.tight_layout()
 
 # Show the plot
-plt.show()
+#plt.show()

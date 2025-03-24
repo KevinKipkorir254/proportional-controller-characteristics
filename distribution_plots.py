@@ -19,4 +19,4 @@ for i, column in enumerate(df_numeric.columns, 1):
 
 # Adjust layout and display
 plt.tight_layout()
-plt.show()
+plt.savefig('Time_series__characteristics_distribution.png', dpi=200, bbox_inches='tight')

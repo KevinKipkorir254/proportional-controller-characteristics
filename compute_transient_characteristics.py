@@ -142,9 +142,9 @@ plt.title('Processed Step Response Data (Transient Analysis)')
 plt.xlabel('Time (s)')
 plt.ylabel('Output')
 plt.grid(True)
-plt.legend()
+#plt.legend()
 plt.tight_layout()
-plt.show()
+plt.savefig('Time_series_data.png', dpi=200, bbox_inches='tight')
 
 # Create and display the comparison table
 metrics_df = pd.DataFrame(metrics)
