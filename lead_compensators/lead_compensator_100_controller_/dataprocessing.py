@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 import os
 
 # Define the folders (replace these with your actual folder paths)
-folders = ['filtered_velocity_1', 'filtered_velocity_2', 'filtered_velocity_3', 'filtered_velocity_4', 'filtered_velocity_5', 'filtered_velocity_6', 'filtered_velocity_7', 'filtered_velocity_8', 'filtered_velocity_9', 'filtered_velocity_10', 'filtered_velocity_11', 'filtered_velocity_12', 'filtered_velocity_13', 'filtered_velocity_14', 'filtered_velocity_15', 'filtered_velocity_16', 'filtered_velocity_17', 'filtered_velocity_18', 'filtered_velocity_19', 'filtered_velocity_20']
+folders = ['filtered_velocity_2', 'filtered_velocity_3', 'filtered_velocity_4', 'filtered_velocity_5', 'filtered_velocity_6', 'filtered_velocity_8', 'filtered_velocity_9', 'filtered_velocity_10', 'filtered_velocity_11', 'filtered_velocity_12', 'filtered_velocity_13', 'filtered_velocity_14', 'filtered_velocity_15', 'filtered_velocity_16', 'filtered_velocity_17', 'filtered_velocity_18', 'filtered_velocity_19', 'filtered_velocity_20']
 
 # Colors for each folder's data in the plot
-colors = ['blue', 'green', 'red', 'purple', 'yellow', 'orange', 'pink', 'brown', 'black', 'turquoise', 'gray', 'cyan', 'magenta', 'lime', 'indigo', 'violet', 'teal', 'gold', 'silver', 'maroon']
-labels = ['filtered_velocity_1', 'filtered_velocity_2', 'filtered_velocity_3', 'filtered_velocity_4', 'filtered_velocity_5', 'filtered_velocity_6', 'filtered_velocity_7', 'filtered_velocity_8', 'filtered_velocity_9', 'filtered_velocity_10', 'filtered_velocity_11', 'filtered_velocity_12', 'filtered_velocity_13', 'filtered_velocity_14', 'filtered_velocity_15', 'filtered_velocity_16', 'filtered_velocity_17', 'filtered_velocity_18', 'filtered_velocity_19', 'filtered_velocity_20']
+colors = ['red', 'purple', 'yellow', 'orange', 'pink', 'brown', 'black', 'turquoise', 'gray', 'cyan', 'magenta', 'lime', 'indigo', 'violet', 'teal', 'gold', 'silver', 'maroon']
+labels = ['filtered_velocity_2', 'filtered_velocity_3', 'filtered_velocity_4', 'filtered_velocity_5', 'filtered_velocity_6', 'filtered_velocity_8', 'filtered_velocity_9', 'filtered_velocity_10', 'filtered_velocity_11', 'filtered_velocity_12', 'filtered_velocity_13', 'filtered_velocity_14', 'filtered_velocity_15', 'filtered_velocity_16', 'filtered_velocity_17', 'filtered_velocity_18', 'filtered_velocity_19', 'filtered_velocity_20']
 
 # Initialize a figure for plotting
 plt.figure(figsize=(10, 6))
@@ -62,4 +62,4 @@ plt.tight_layout()
 
 # Show the plot
 plt.show()
-#plt.savefig()
+#plt.savefig("Time_series_data")

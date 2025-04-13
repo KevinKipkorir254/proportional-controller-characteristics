@@ -11,12 +11,12 @@ def calculate_poles(wn, zeta):
 
 # Manually enter folder paths where 'transient_metrics.csv' is located
 folder_paths = [
-    r"C:\Users\HP\Desktop\filtered_velocity\proportional_controllers\P_100_controller",
-    r"C:\Users\HP\Desktop\filtered_velocity\proportional_controllers\P_120_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\proportional_controllers\P_140_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\proportional_controllers\P_160_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\proportional_controllers\P_180_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\proportional_controllers\P_200_controller_"
+    "P_100_controller",
+    "P_120_controller_",
+    "P_140_controller_",
+    "P_160_controller_",
+    "P_180_controller_",
+    "P_200_controller_"
 ]  # Replace with actual paths
 
 # Define colors for each dataset
@@ -62,7 +62,7 @@ plt.xlabel("Real Axis")
 plt.ylabel("Imaginary Axis")
 plt.title("Limited Root Locus")
 plt.legend()
-plt.show()
+#plt.show()
 plt.savefig("limited root locus")
 
 # Print the first few rows to verify output

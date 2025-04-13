@@ -11,12 +11,12 @@ def calculate_poles(wn, zeta):
 
 # Manually enter folder paths where 'transient_metrics.csv' is located
 folder_paths = [
-    r"C:\Users\HP\Desktop\filtered_velocity\lead_compensators\lead_compensator_100_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\lead_compensators\lead_compensator_120_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\lead_compensators\lead_compensator_140_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\lead_compensators\lead_compensator_160_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\lead_compensators\lead_compensator_180_controller_",
-    r"C:\Users\HP\Desktop\filtered_velocity\lead_compensators\lead_compensator_200_controller_"
+    #"lead_compensator_100_controller_",
+    "lead_compensator_120_controller_",
+    "lead_compensator_140_controller_",
+    "lead_compensator_160_controller_",
+    "lead_compensator_180_controller_",
+    "lead_compensator_200_controller_"
 ]  # Replace with actual paths
 
 # Define colors for each dataset

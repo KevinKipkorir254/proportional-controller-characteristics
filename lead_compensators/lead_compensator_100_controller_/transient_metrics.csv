@@ -1,11 +1,9 @@
 System,Rise Time (s),Settling Time (s),Overshoot (%),Steady-State Value,Undamped Natural Freq (rad/s),Damping Ratio
-filtered_velocity_1,0.123,0.961,38.203,0.878,47.195,0.099
 filtered_velocity_2,0.115,0.959,40.69,0.862,55.346,0.651
 filtered_velocity_3,0.084,0.796,29.412,0.89,40.88,0.018
 filtered_velocity_4,0.122,0.95,39.477,0.881,38.994,0.036
 filtered_velocity_5,0.118,0.92,41.267,0.857,41.718,0.046
 filtered_velocity_6,0.112,0.94,41.617,0.839,45.016,0.001
-filtered_velocity_7,3.112,3.96,2.705,1.99,140.131,0.002
 filtered_velocity_8,0.117,0.95,38.857,0.867,41.792,0.026
 filtered_velocity_9,0.124,0.971,38.917,0.863,41.215,0.056
 filtered_velocity_10,0.113,1.16,41.253,0.859,40.181,0.016
