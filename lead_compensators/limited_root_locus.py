@@ -62,7 +62,7 @@ plt.xlabel("Real Axis")
 plt.ylabel("Imaginary Axis")
 plt.title("Limited_Root_Locus")
 plt.legend()
-plt.show()
+#plt.show()
 plt.savefig("limited_root_locus")
 
 # Print the first few rows to verify output
